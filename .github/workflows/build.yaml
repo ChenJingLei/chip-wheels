@@ -5,7 +5,7 @@ on: push
 jobs:
   build_prepare:
     name: Prepare build
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-22.04
     outputs:
       version: ${{ steps.version.outputs.version }}
       channel: ${{ steps.version.outputs.channel }}
