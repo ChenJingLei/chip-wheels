@@ -156,7 +156,7 @@ jobs:
       matrix:
         arch:
           - name: x86_64
-            runner: ubuntu-22.04
+            runner: ubuntu-24.04
           - name: aarch64
             runner: ARM64
 
