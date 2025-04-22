@@ -130,6 +130,7 @@ jobs:
           scripts/run_in_build_env.sh "ninja -C ./out chip-repl"
       - name: Run Python library specific unit tests
         run: |
+          lsb_release
           # apt update && apt install libgirepository-2.0-dev libgirepository-2.0-0
           scripts/run_in_build_env.sh 'pip3 install ./out/controller/python/home_assistant_chip_core-${{ needs.build_prepare.outputs.version }}-cp37-abi3-manylinux_2_31_${{ matrix.arch.name }}.whl'
           scripts/run_in_build_env.sh 'pip3 install ./out/controller/python/home_assistant_chip_clusters-${{ needs.build_prepare.outputs.version }}-py3-none-any.whl'
