@@ -76,10 +76,10 @@ jobs:
       matrix:
         arch:
           - name: x86_64
-            container: ghcr.io/project-chip/chip-build:1
+            container: ghcr.io/project-chip/chip-build:latest
             runner: ubuntu-24.04
           - name: aarch64
-            container: docker.io/agners/aarch64-chip-build:1
+            container: docker.io/agners/aarch64-chip-build:latest
             runner: ARM64
 
     runs-on: ${{ matrix.arch.runner }}
@@ -131,7 +131,7 @@ jobs:
       - name: Run Python library specific unit tests
         run: |
           lsb_release
-          # apt update && apt install libgirepository-2.0-dev libgirepository-2.0-0
+          apt update && apt install libgirepository-2.0-dev libgirepository-2.0-0
           scripts/run_in_build_env.sh 'pip3 install ./out/controller/python/home_assistant_chip_core-${{ needs.build_prepare.outputs.version }}-cp37-abi3-manylinux_2_31_${{ matrix.arch.name }}.whl'
           scripts/run_in_build_env.sh 'pip3 install ./out/controller/python/home_assistant_chip_clusters-${{ needs.build_prepare.outputs.version }}-py3-none-any.whl'
           scripts/run_in_build_env.sh 'pip3 install ./out/controller/python/home_assistant_chip_repl-${{ needs.build_prepare.outputs.version }}-py3-none-any.whl'
